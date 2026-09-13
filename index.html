@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Autoškola Pavlů – oficiální web</title>
+  <meta name="description" content="Autoškola Pavlů – profesionální výuka řidičů: skupiny B, B+E, AM, A1, A2, A. Individuální přístup, moderní vozový park, možnost splátek.">
+  <meta name="theme-color" content="#0056b3">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+  <meta property="og:title" content="Autoškola Pavlů">
+  <meta property="og:description" content="Profesionální výuka řidičů v okrese Uherské Hradiště. Přihlaste se online.">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="https://via.placeholder.com/1200x630.png?text=Auto%C5%A1kola+Pavl%C5%AF">
+  <style>
+    :root{
+      --primary:#0056b3;
+      --primary-dark:#003d80;
+      --accent:#ff7a00;
+      --bg:#f5f7fb;
+      --text:#1f2937;
+      --muted:#6b7280;
+      --radius:16px;
+      --shadow:0 10px 30px rgba(2,6,23,.08);
+    }
+    *{box-sizing:border-box}
+    html,body{margin:0;padding:0}
+    body{font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;color:var(--text);background:var(--bg);line-height:1.6}
+    a{color:var(--primary);text-decoration:none}
+    a:hover{text-decoration:underline}
+    .container{width:min(1100px,92%);margin-inline:auto}
+  .brand {
+    color: #558000;
+    font-weight: 800;
+    font-size: 20px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+    header.hero{background:linear-gradient(90deg,var(--primary),var(--primary-dark));color:#fff;position:relative;overflow:hidden}
+    header .wrap{padding:72px 0;display:grid;grid-template-columns:1.2fr 1fr;gap:40px;align-items:center}
+    @media (max-width:900px){header .wrap{grid-template-columns:1fr;padding:56px 0}}
+    nav.top{background:#fff;position:sticky;top:0;z-index:40;border-bottom:1px solid #e5e7eb}
+    .nav-inner{display:flex;align-items:center;justify-content:space-between;height:60px}
+    .nav-links{display:flex;gap:18px;align-items:center}
+    .nav-links a{padding:8px 12px;border-radius:10px}
+    .nav-links a.cta{background:var(--accent);color:#fff;font-weight:700}
+    .nav-toggle {
+      display: none;
+      background: none;
+      border: 0;
+      font-size: 28px;
+      cursor: pointer;
+      color: var(--primary-dark);
+    }
+    @media (max-width: 800px) {
+      .nav-toggle { display: block; }
+      .nav-links {
+        display: none;
+        flex-direction: column;
+        gap: 10px;
+        position: absolute;
+        top: 60px;
+        right: 10px;
+        background: #fff;
+        padding: 12px;
+        border-radius: 12px;
+        box-shadow: var(--shadow);
+      }
+      .nav-links.open { display: flex; }
+    }
+    .badge{display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.25);padding:8px 12px;border-radius:999px;font-size:14px}
+    .hero h1{margin:10px 0 8px;font-size:clamp(28px,4vw,44px);line-height:1.2}
+    .hero p{color:#e5e7eb;margin:0 0 18px}
+    .hero .actions{display:flex;gap:12px;flex-wrap:wrap}
+    .btn{display:inline-flex;align-items:center;gap:10px;background:#fff;color:var(--primary-dark);padding:12px 18px;border-radius:12px;border:0;font-weight:700;box-shadow:var(--shadow);cursor:pointer}
+    .btn.secondary{background:transparent;border:1px solid rgba(255,255,255,.5);color:#fff;box-shadow:none}
+    .card{background:#fff;border-radius:var(--radius);box-shadow:var(--shadow);padding:22px}
+    .section{padding:56px 0}
+    h2.section-title{font-size:clamp(22px,3vw,30px);margin:0 0 16px;color:var(--primary-dark)}
+    .grid-2{display:grid;grid-template-columns:1fr 1fr;gap:28px}
+    @media (max-width:900px){.grid-2{grid-template-columns:1fr}}
+    .icon-list{display:grid;gap:10px}
+    .icon-row{display:flex;gap:10px;align-items:flex-start}
+    .icon-row i{color:var(--primary);margin-top:4px}
+    .plans{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+    @media (max-width:900px){.plans{grid-template-columns:1fr}}
+    .plan .price{font-size:28px;font-weight:800;color:var(--primary-dark)}
+    .muted{color:var(--muted)}
+    form .row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+    @media (max-width:700px){form .row{grid-template-columns:1fr}}
+    input,select,textarea{width:100%;padding:12px 14px;border:1px solid #e5e7eb;border-radius:12px;background:#fff;font:inherit}
+    textarea{min-height:120px}
+    form .submit{margin-top:8px;display:flex;gap:10px;align-items:center}
+    .download-list a{display:flex;align-items:center;gap:10px;padding:10px 12px;border:1px dashed #d1d5db;border-radius:12px;background:#fafafa}
+    footer{background:#0b1b3a;color:#c7d2fe;padding:40px 0;margin-top:40px}
+    footer a{color:#fff}
+    .faq details{background:#fff;border-radius:12px;box-shadow:var(--shadow);padding:14px}
+    .faq details+details{margin-top:10px}
+    .map-embed{width:100%;height:320px;border:0;border-radius:14px;filter:grayscale(.1) saturate(1.1)}
+    .pill{display:inline-flex;gap:8px;align-items:center;background:#eef2ff;color:#3730a3;border-radius:999px;padding:6px 10px;font-weight:600;font-size:14px}
+.hero .card {
+  color: #111; /* tmavý text, dobře čitelný na bílém pozadí */
+}
+.hero .card strong {
+  color: var(--primary-dark); /* modré zvýraznění tučných popisků */
+}
+.image-overlay {
+  position: relative;
+  margin-bottom: 16px;
+}
+.image-overlay img {
+  width: 100%;
+  height: auto;
+  border-radius: 12px;
+}
+.image-overlay .overlay-text {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  background: transparent;
+  padding: 16px;
+  box-sizing: border-box;
+  text-align: center;
+  /* případně text-shadow pro lepší čitelnost: */
+  text-shadow: 0 0 8px rgba(0,0,0,0.7);
+}
+.recenze-section {
+  text-align: center;
+  margin: 60px 0;
+  font-family: Arial, sans-serif;
+}
+.recenze-nadpis {
+  font-size: 28px;
+  color: #2c3e50;
+  margin-bottom: 30px;
+}
+.recenze-carousel-wrapper {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+.recenze-carousel {
+  width: 100%;
+  max-width: 700px;
+  overflow: hidden;
+  border-radius: 15px;
+  padding: 30px;
+  background: #ffffff;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+  text-align: center;
+  transition: all 0.5s ease;
+}
+.recenze-slide {
+  display: none;
+  font-size: 17px;
+  line-height: 1.6;
+  color: #34495e;
+}
+.recenze-slide.active {
+  display: block;
+}
+</style>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "DrivingSchool",
+    "name": "Autoškola Pavlů",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Tupesy 17",
+      "addressLocality": "Tupesy",
+      "postalCode": "687 07",
+      "addressCountry": "CZ"
+    },
+    "areaServed": "Uherské Hradiště",
+    "telephone": "+420 776 886 472",
+    "email": "lukaspavlu@gmail.com",
+    "url": "https://www.autoskolapavlu.cz",
+    "openingHours": "Mo-Sun 00:00-24:00",
+    "sameAs": ["https://www.facebook.com/"],
+    "priceRange": "KčKč",
+    "description": "Profesionální výuka řidičů – skupiny B, B+E, AM, A1, A2, A."
+  }
+  </script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-FCFZD1RNG0"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-FCFZD1RNG0');
+</script>
+</head>
+<body>
+  <nav class="top">
+    <div class="container nav-inner">
+      <a href="#" class="brand">
+  <img src="images/logo.png" alt="Logo Autoškoly Pavlů" style="height:32px; vertical-align:middle;">
+  <span>Autoškola Pavlů</span>
+</a>
+      <button class="nav-toggle" aria-label="Menu"><i class="bi bi-list"></i></button>
+      <div class="nav-links">
+        <a href="#onas">O nás</a>
+        <a href="#kurzy">Kurzy</a>
+        <a href="#cenik">Ceník</a>
+        <a href="#prihlaska">Přihláška</a>
+        <a href="#download">Ke stažení</a>
+	<a href="#kontakt">Kontakty</a>
+        <a href="#" id="fbLink">
+  <i class="bi bi-facebook"></i>
+</a>
+        <a href="https://www.instagram.com/autoskolapavlu.cz" target="_blank" rel="noopener"><i class="bi bi-instagram"></i></a>
+<script>
+  (function(){
+    var fbPage     = 'https://www.facebook.com/AutoskolaPavlu';
+    var siteUrl    = 'https://www.facebook.com/AutoskolaPavlu';
+    var link       = document.getElementById('fbLink');
+    var timeoutMs  = 800;
+    link.addEventListener('click', function(e){
+      e.preventDefault();
+      var appOpened   = false;
+      var fallbackId  = null;
+      // 1) pokud stránka ztratí viditelnost (appka se otevře), zruš fallback
+      function handleVisibility(){
+        if (document.hidden){
+          appOpened = true;
+          clearTimeout(fallbackId);
+          document.removeEventListener('visibilitychange', handleVisibility);
+        }
+      }
+      document.addEventListener('visibilitychange', handleVisibility);
+      // 2) pokus o otevření v nativní appce
+      window.location = 'fb://facewebmodal/f?href=' + encodeURIComponent(fbPage);
+      // 3) fallback po X ms — pokud appka nebyla spuštěná, jdeme na váš web
+      fallbackId = setTimeout(function(){
+        document.removeEventListener('visibilitychange', handleVisibility);
+        if (!appOpened){
+          window.location = siteUrl;
+        }
+      }, timeoutMs);
+    });
+  })();
+</script>
+        <a class="cta" href="#prihlaska"><i class="bi bi-pencil-square"></i> Přihlásit se</a>
+      </div>
+    </div>
+  </nav>
+  <header class="hero">
+    <div class="container wrap">
+      <div>
+        <span class="badge"><i class="bi bi-shield-check"></i> Individuální přístup & moderní vozidla</span>
+        <h1>Vaše jistá cesta k řidičáku</h1>
+        <p>Naučíme vás řídit s klidem a jistotou. Od prvního rozjezdu až po úspěšné zkoušky.</p>
+        <div class="actions">
+          <a class="btn" href="#prihlaska"><i class="bi bi-calendar2-week"></i> Přihlásit se do kurzu</a>
+          <a class="btn secondary" href="#kurzy"><i class="bi bi-car-front-fill"></i> Jak probíhá výcvik</a>
+        </div>
+      </div>
+      <div>
+        <div class="card" aria-label="Rychlé informace">
+          <div class="icon-row"><i class="bi bi-geo-alt"></i> <strong>Učebna:</strong> Gymnázium Uherské Hradiště</div>
+          <div class="icon-row"><i class="bi bi-speedometer2"></i> <strong>Délka kurzu:</strong> individuální</div>
+          <div class="icon-row"><i class="bi bi-car-front"></i> <strong>Vozidla:</strong> Škoda Fabia IV</div>
+          <div class="icon-row"><i class="bi bi-clock-history"></i> <strong>Termíny:</strong> nástup kdykoliv</div>
+        </div>
+      </div>
+    </div>
+  </header>
+  <main>
+    <section id="onas" class="section">
+  <div class="container grid-2">
+    <div>
+      <h2 class="section-title"><i class="bi bi-people-fill"></i> O nás</h3>
+      <div class="image-overlay">
+        <img
+          src="images/fabia.jpg"
+          alt="Fabia"
+          loading="lazy"
+        >
+        <div class="overlay-text">
+          Jsme zavedená autoškola s důrazem na bezpečnost a pohodu při výuce. Ke studentům přistupujeme individuálně. Teorii vedeme srozumitelně a jízdy plánujeme flexibilně podle vašeho času. Dáváme si záležet, abychom Vás vybavili dovednostmi, které Vám vydrží celý život.
+        </div>
+      </div>
+      <div class="icon-list">
+        <div class="icon-row"><i class="bi bi-person-badge"></i> Instruktoři s trpělivým přístupem</div>
+        <div class="icon-row"><i class="bi bi-car-front"></i> Nová moderní auta</div>
+        <div class="icon-row"><i class="bi bi-mortarboard"></i> Zdarma materiály pro domácí přípravu a online testy Autoškola&nbsp;Pohodlně</div>
+      </div>
+    </div>
+    <div class="card">
+      <h3 class="section-title"><i class="bi bi-check2-circle"></i> Co získáte</h3>
+      <ul>
+        <li>Rozjezd bez stresu a jistotu v běžném provozu</li>
+        <li>Individuální plán jízd i pro úplné začátečníky</li>
+        <li>Tipy, jak uspět u testů a jízd u komisaře</li>
+      </ul>
+      <p><span class="pill"><i class="bi bi-stars"></i> 95% úspěšnost u zkoušek*</span></p>
+      <p class="muted" style="font-size:12px">* Interní statistika za poslední 2 roky.</p>
+    </div>
+  </div>
+<div class="recenze-section">
+  <h2 class="recenze-nadpis">Recenze</h3>
+  <div class="recenze-carousel-wrapper">
+    <div class="recenze-carousel">
+      <div class="recenze-slide active">
+        <p>"Skvělá autoškola! Instruktoři jsou trpěliví a profesionální." – Jana K.</p>
+      </div>
+      <div class="recenze-slide">
+        <p>"Díky výbornému panu instruktorovi jsem zvládl zkoušky na první pokus!" – Petr M.</p>
+      </div>
+      <div class="recenze-slide">
+        <p>"Flexibilní rozvrh a pohodová atmosféra během výuky." – Lucie S.</p>
+      </div>
+      <div class="recenze-slide">
+        <p>"Doporučuji všem, kteří chtějí kvalitní výcvik a individuální přístup." – Tomáš R.</p>
+      </div>
+      <div class="recenze-slide">
+        <p>"Výborné materiály a jasné vysvětlení teorie i praxe." – Eva N.</p>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+    <section id="kurzy" class="section" style="background:#fff">
+      <div class="container">
+        <h2 class="section-title"><i class="bi bi-journal-check"></i> Kurzy & výcvik</h3>
+        <div class="grid-2">
+          <div class="card">
+            <h3><i class="bi bi-car-front-fill"></i> Skupina B</h3>
+            <p>Opravňuje k řízení osobních automobilů a lehkých užitkových vozidel (dodávek) do celkové hmotnosti 3500 kg, s maximálně 8 místy k sezení kromě místa řidiče. Můžete za ně připojit i přívěs do 750 kg.</p>
+            <ul>
+              <li>Výuka probíhá na gymnáziu Uherské Hradiště</li>
+              <li>Výcvik probíhá ve Škodě Fabia IV v nejvyšší výbavě</li>
+            </ul>
+<p class="muted">Výuka probíhá dle zákona č. 247/2000 Sb. – k závěrečným zkouškám jdete připraveni.</p>
+          </div>
+          <div class="card">
+            <h3><i class="bi bi-emoji-smile"></i> Kondiční jízdy</h3>
+            <p>Pro držitele ŘP, kteří si chtějí osvěžit dovednosti (parkování, dálnice, město).</p>
+          </div> 
+      </div> 
+    </section>
+    <section id="cenik" class="section">
+      <div class="container">
+        <h2 class="section-title"><i class="bi bi-cash-coin"></i> Ceník</h3>
+        <div class="plans">
+          <div class="card plan">
+            <h3>Skupina B</h3>
+            <p class="price">Studenti 18 000 Kč</p>
+		<p class="muted">Rycholokurz 21 000 Kč</p>
+		<p class="muted">Automat 20 000 Kč</p>
+            <p class="muted">Standardní cena 19 000 Kč</p>
+<p class="muted">Cena pro přihlášky zaevidované po 1.2.2026</p>
+          </div>
+          <div class="card plan">
+            <h3>Kondiční jízdy</h3>
+            <p class="price">600 Kč / 45 min</p>
+            <p class="muted">Balíčky na míru</p>
+          </div>
+ <div class="card plan">
+            <h3>Platba úřadu za zkoušky</h3>
+            <p class="muted">1.Zkouška 700 Kč</p>
+<p class="muted">Opravná jízda 400 Kč</p>
+<p class="muted">Opravný test 100 Kč</p>
+            <p class="muted"></p>
+<h3>Platba autoškole za opravné zkoušky</h3>
+<p class="muted">Opravná jízda 500 Kč</p>
+<p class="muted">Opravný test 100 Kč</p>
+          </div>
+        </div>
+        <p class="muted">Možnost splátek po dohodě.</p>
+      </div>
+    </section>
+    <section id="prihlaska" class="section">
+      <div class="container">
+        <h2 class="section-title"><i class="bi bi-pencil-fill"></i> Online přihláška</h3>
+        <iframe src="https://app.odjeto.cz/student-register?schoolId=8" width="100%" height="1150" frameborder="0" style="border:none; max-width:1250px;"></iframe>
+       </div>
+    </section>
+        <section id="download" class="section">
+  <div class="container">
+    <h2 class="section-title"><i class="bi bi-file-earmark-arrow-down"></i> Ke stažení</h3>
+    <div class="grid-2">
+      <div class="card">
+        <h3><i class="bi bi-file-earmark-pdf"></i> Žádost o přijetí</h3>
+        <p>Formulář pro zahájení výuky v autoškole.</p>
+        <a href="download/zadost_o_prijeti_k_vyuce.pdf" class="btn" download>
+          <i class="bi bi-download"></i> Stáhnout PDF
+        </a>
+      </div>
+      <div class="card">
+        <h3><i class="bi bi-file-earmark-pdf"></i> Lékařský posudek</h3>
+        <p>Potvrzení o zdravotní způsobilosti od lékaře.</p>
+        <a href="download/posudek_o_zdravotni_zpusobilosti.pdf" class="btn" download>
+          <i class="bi bi-download"></i> Stáhnout PDF
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+      <div class="container faq">
+        <h2 class="section-title"><i class="bi bi-question-circle"></i> Časté dotazy</h3>
+        <details><summary>Jak dlouho trvá kurz?</summary><p>Je to individuální, dle vašich časových možností a domluvy s instruktorem.</p></details>
+        <details><summary>Je možná platba na splátky?</summary><p>Ano, po dohodě. Rádi najdeme vhodný plán.</p></details>
+        <details><summary>Kde probíhá teorie?</summary><p>V učebně na Gymnáziu Uherské Hradiště.</p></details>
+      </div>
+    </section>
+    <section id="kontakt" class="section" style="background:#fff">
+      <div class="container grid-2">
+        <div>
+          <h2 class="section-title"><i class="bi bi-telephone-fill"></i> Kontakt</h3>
+          <p><strong>Autoškola Pavlů</strong><br>Učebna: Gymnázium Uherské Hradiště<br>Velehradská třída 218, 686 01 Uherské Hradiště</p>
+          <p><i class="bi bi-telephone"></i> <a href="tel:+420776886472">+420 776 886 472</a><br>
+             <i class="bi bi-envelope"></i> <a href="mailto:lukaspavlu@gmail.com">lukaspavlu@gmail.com</a></p>
+          <p><i class="bi bi-clock"></i> Po–Ne 00:00–24:00</p>
+          <p>
+            <a class="btn" href="#prihlaska"><i class="bi bi-pencil-square"></i> Přihlásit se online</a>
+          </p>
+        </div>
+        <div>
+          <iframe class="map-embed" title="Mapa – Gymnázium Uherské Hradiště"
+            src="https://www.google.com/maps?q=Gymn%C3%A1zium%20Uhersk%C3%A9%20Hradi%C5%A1t%C4%9B%2C%20Velehradsk%C3%A1%20t%C5%99%C3%ADda%20218%2C%20Uhersk%C3%A9%20Hradi%C5%A1t%C4%9B&output=embed" allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </section>
+  </main>
+  <footer>
+    <div class="container">
+      <div class="grid-2">
+        <p>© 2025 Autoškola Pavlů. Všechna práva vyhrazena.</p>
+        <p style="text-align:right">Autor: LP.<br>
+          <a href="https://www.facebook.com/AutoskolaPavlu" target="_blank" rel="noopener"><i class="bi bi-facebook"></i></a>&nbsp;&nbsp;<a href="https://www.instagram.com/" target="_blank" rel="noopener"><i class="bi bi-instagram"></i></a></p>
+      </div>
+    </div>
+  </footer>
+  <script>
+    // Smooth scroll for in-page links
+    document.querySelectorAll('a[href^="#"]').forEach(a=>{
+      a.addEventListener('click', e=>{
+        const id = a.getAttribute('href');
+        if(id.length>1){
+          e.preventDefault();
+          document.querySelector(id)?.scrollIntoView({behavior:'smooth'});
+        }
+      });
+    });
+    // Simple client-side "submission" (only if form exists)
+    const form = document.getElementById('signupForm');
+    if(form){
+      form.addEventListener('submit', (e)=>{
+        e.preventDefault();
+        const data = Object.fromEntries(new FormData(form).entries());
+        // Basic validation
+        for (const key of ['jmeno','prijmeni','narozeni','email','telefon','skupina']){
+          if(!data[key]){ alert('Vyplňte všechna povinná pole.'); return; }
+        }
+        alert('Děkujeme! Vaše přihláška byla zaznamenána (ukázkový režim). Nastavte si odesílání na e-mail nebo do CRM.');
+        form.reset();
+      });
+    }
+    // Hamburger menu toggle (s kontrolou existence prvků)
+    (function(){
+      const toggle = document.querySelector('.nav-toggle');
+      const navLinks = document.querySelector('.nav-links');
+      if(toggle && navLinks){
+        toggle.addEventListener('click', ()=> navLinks.classList.toggle('open'));
+        // Zavřít menu při kliknutí na odkaz (užitečné na mobilu)
+        navLinks.querySelectorAll('a').forEach(a=>{
+          a.addEventListener('click', ()=> {
+            if(navLinks.classList.contains('open')) navLinks.classList.remove('open');
+          });
+        });
+      }
+    })();
+</script>
+<script>
+let currentIndex = 0;
+const slides = document.querySelectorAll('.recenze-slide');
+function showSlide(index) {
+  slides.forEach((slide, i) => {
+    slide.classList.toggle('active', i === index);
+  });
+}
+function nextSlide() {
+  currentIndex = (currentIndex + 1) % slides.length;
+  showSlide(currentIndex);
+}
+// Inicializace
+showSlide(currentIndex);
+setInterval(nextSlide, 5000); // Rotace po 5 sekundách
+</script></body>
+</html>
