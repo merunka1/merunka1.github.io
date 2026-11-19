@@ -186,6 +186,9 @@
 .recenze-slide.active {
   display: block;
 }
+.app-link{display:inline-flex;align-items:center;gap:8px;margin-top:8px;padding:8px 14px;border-radius:10px;background:#111;color:#fff;font-weight:600;font-size:14px}
+.app-link:hover{text-decoration:none;background:#333}
+.icon-row .app-link i{color:#fff;margin-top:0}
 /* Cookie lišta */
 .cookie-bar{position:fixed;left:16px;right:16px;bottom:16px;z-index:100;max-width:720px;margin-inline:auto;background:#fff;color:var(--text);border-radius:var(--radius);box-shadow:0 10px 40px rgba(2,6,23,.25);padding:18px 20px;display:flex;gap:16px;align-items:center;flex-wrap:wrap}
 .cookie-bar[hidden]{display:none}
@@ -327,7 +330,8 @@
       <div class="icon-list">
         <div class="icon-row"><i class="bi bi-person-badge"></i> Instruktoři s trpělivým přístupem</div>
         <div class="icon-row"><i class="bi bi-car-front"></i> Nová moderní auta</div>
-        <div class="icon-row"><i class="bi bi-mortarboard"></i> Zdarma materiály pro domácí přípravu a online testy Autoškola?&nbsp;Pohodlně!</div>
+        <div class="icon-row"><i class="bi bi-mortarboard"></i> <div>Zdarma materiály pro domácí přípravu a online testy Autoškola?&nbsp;Pohodlně!<br>
+          <a class="app-link" href="https://play.google.com/store/apps/details?id=cz.odjeto.autoskola_testy&amp;pcampaignid=web_share" target="_blank" rel="noopener"><i class="bi bi-google-play"></i> Stáhnout aplikaci na Google Play</a></div></div>
       </div>
     </div>
     <div class="card">
