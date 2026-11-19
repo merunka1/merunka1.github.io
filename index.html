@@ -4,8 +4,10 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Autoškola Pavlů Uherské Hradiště</title>
-  <meta name="description" content="Autoškola Pavlů – profesionální výuka řidičů: skupiny B, B+E, AM, A1, A2, A. Individuální přístup, moderní vozový park, možnost splátek.">
+  <meta name="description" content="Autoškola Pavlů Uherské Hradiště – výuka řidičů skupiny B a kondiční jízdy. Individuální přístup, nová Škoda Fabia IV, možnost splátek.">
   <meta name="theme-color" content="#0056b3">
+  <link rel="canonical" href="https://www.autoskolapavlu.cz/">
+  <link rel="icon" type="image/png" href="images/logo.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
@@ -13,7 +15,8 @@
   <meta property="og:title" content="Autoškola Pavlů">
   <meta property="og:description" content="Profesionální výuka řidičů v okrese Uherské Hradiště. Přihlaste se online.">
   <meta property="og:type" content="website">
-  <meta property="og:image" content="https://via.placeholder.com/1200x630.png?text=Auto%C5%A1kola+Pavl%C5%AF">
+  <meta property="og:url" content="https://www.autoskolapavlu.cz/">
+  <meta property="og:image" content="https://www.autoskolapavlu.cz/images/fabia.jpg">
   <style>
     :root{
       --primary:#0056b3;
@@ -31,6 +34,8 @@
     a{color:var(--primary);text-decoration:none}
     a:hover{text-decoration:underline}
     .container{width:min(1100px,92%);margin-inline:auto}
+    section[id]{scroll-margin-top:70px}
+    img{max-width:100%}
   .brand {
     color: #558000;
     font-weight: 800;
@@ -78,7 +83,10 @@
     .btn{display:inline-flex;align-items:center;gap:10px;background:#fff;color:var(--primary-dark);padding:12px 18px;border-radius:12px;border:0;font-weight:700;box-shadow:var(--shadow);cursor:pointer}
     .btn.secondary{background:transparent;border:1px solid rgba(255,255,255,.5);color:#fff;box-shadow:none}
     .card{background:#fff;border-radius:var(--radius);box-shadow:var(--shadow);padding:22px}
-    .section{padding:56px 0}
+    .section{padding:32px 0}
+    @media (max-width:700px){.section{padding:24px 0}}
+    #prihlaska,#download{padding:12px 0}
+    #prihlaska iframe{display:block}
     h2.section-title{font-size:clamp(22px,3vw,30px);margin:0 0 16px;color:var(--primary-dark)}
     .grid-2{display:grid;grid-template-columns:1fr 1fr;gap:28px}
     @media (max-width:900px){.grid-2{grid-template-columns:1fr}}
@@ -95,7 +103,7 @@
     textarea{min-height:120px}
     form .submit{margin-top:8px;display:flex;gap:10px;align-items:center}
     .download-list a{display:flex;align-items:center;gap:10px;padding:10px 12px;border:1px dashed #d1d5db;border-radius:12px;background:#fafafa}
-    footer{background:#0b1b3a;color:#c7d2fe;padding:40px 0;margin-top:40px}
+    footer{background:#0b1b3a;color:#c7d2fe;padding:32px 0;margin-top:0}
     footer a{color:#fff}
     .faq details{background:#fff;border-radius:12px;box-shadow:var(--shadow);padding:14px}
     .faq details+details{margin-top:10px}
@@ -124,17 +132,29 @@
   align-items: center;
   justify-content: center;
   color: #fff;
-  background: transparent;
+  background: rgba(0,0,0,0.35);
+  border-radius: 12px;
   padding: 16px;
   box-sizing: border-box;
   text-align: center;
-  /* případně text-shadow pro lepší čitelnost: */
   text-shadow: 0 0 8px rgba(0,0,0,0.7);
+}
+/* Na úzkých displejích by text přetékal přes obrázek – zobrazit ho pod obrázkem */
+@media (max-width: 1000px) {
+  .image-overlay .overlay-text {
+    position: static;
+    height: auto;
+    margin-top: 8px;
+    color: var(--text);
+    background: #fff;
+    box-shadow: var(--shadow);
+    text-shadow: none;
+    text-align: left;
+  }
 }
 .recenze-section {
   text-align: center;
-  margin: 60px 0;
-  font-family: Arial, sans-serif;
+  margin: 32px 0 0;
 }
 .recenze-nadpis {
   font-size: 28px;
@@ -166,6 +186,15 @@
 .recenze-slide.active {
   display: block;
 }
+/* Cookie lišta */
+.cookie-bar{position:fixed;left:16px;right:16px;bottom:16px;z-index:100;max-width:720px;margin-inline:auto;background:#fff;color:var(--text);border-radius:var(--radius);box-shadow:0 10px 40px rgba(2,6,23,.25);padding:18px 20px;display:flex;gap:16px;align-items:center;flex-wrap:wrap}
+.cookie-bar[hidden]{display:none}
+.cookie-bar p{margin:0;flex:1 1 320px;font-size:14px}
+.cookie-bar .cookie-actions{display:flex;gap:8px;flex-wrap:wrap}
+.cookie-bar button{font:inherit;font-weight:700;padding:10px 16px;border-radius:12px;cursor:pointer;border:1px solid var(--primary)}
+.cookie-bar .cookie-accept{background:var(--primary);color:#fff}
+.cookie-bar .cookie-reject{background:#fff;color:var(--primary)}
+.cookie-settings{background:none;border:0;padding:0;color:#c7d2fe;font:inherit;font-size:14px;text-decoration:underline;cursor:pointer}
 </style>
   <script type="application/ld+json">
   {
@@ -184,17 +213,25 @@
     "email": "lukaspavlu@gmail.com",
     "url": "https://www.autoskolapavlu.cz",
     "openingHours": "Mo-Sun 00:00-24:00",
-    "sameAs": ["https://www.facebook.com/"],
+    "sameAs": ["https://www.facebook.com/AutoskolaPavlu", "https://www.instagram.com/autoskolapavlu.cz"],
     "priceRange": "Kč",
-    "description": "Profesionální výuka řidičů – skupiny B, B+E, AM, A1, A2, A."
+    "description": "Profesionální výuka řidičů – skupina B a kondiční jízdy."
   }
   </script>
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-FCFZD1RNG0"></script>
 <script>
+  // Google Analytics se načte až po souhlasu s cookies (viz cookie lišta dole)
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'G-FCFZD1RNG0');
+  window.loadAnalytics = function(){
+    if (window.gaLoaded) return;
+    window.gaLoaded = true;
+    var s = document.createElement('script');
+    s.async = true;
+    s.src = 'https://www.googletagmanager.com/gtag/js?id=G-FCFZD1RNG0';
+    document.head.appendChild(s);
+    gtag('js', new Date());
+    gtag('config', 'G-FCFZD1RNG0');
+  };
 </script>
 </head>
 <body>
@@ -204,24 +241,24 @@
   <img src="images/logo.png" alt="Logo Autoškoly Pavlů" style="height:32px; vertical-align:middle;">
   <span>Autoškola Pavlů</span>
 </a>
-      <button class="nav-toggle" aria-label="Menu"><i class="bi bi-list"></i></button>
+      <button class="nav-toggle" aria-label="Menu" aria-expanded="false"><i class="bi bi-list"></i></button>
       <div class="nav-links">
         <a href="#onas">O nás</a>
         <a href="#kurzy">Kurzy</a>
         <a href="#cenik">Ceník</a>
         <a href="#prihlaska">Přihláška</a>
         <a href="#download">Ke stažení</a>
-	<a href="#kontakt">Kontakty</a>
-        <a href="#" id="fbLink">
-  <i class="bi bi-facebook"></i>
-</a>
-        <a href="https://www.instagram.com/autoskolapavlu.cz" target="_blank" rel="noopener"><i class="bi bi-instagram"></i></a>
+        <a href="#kontakt">Kontakty</a>
+        <a href="https://www.facebook.com/AutoskolaPavlu" id="fbLink" target="_blank" rel="noopener" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
+        <a href="https://www.instagram.com/autoskolapavlu.cz" target="_blank" rel="noopener" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
 <script>
   (function(){
     var fbPage     = 'https://www.facebook.com/AutoskolaPavlu';
     var siteUrl    = 'https://www.facebook.com/AutoskolaPavlu';
     var link       = document.getElementById('fbLink');
     var timeoutMs  = 800;
+    // Pokus o otevření nativní aplikace jen na mobilu; na počítači se odkaz otevře normálně
+    if (!/Android|iPhone|iPad|iPod/i.test(navigator.userAgent)) return;
     link.addEventListener('click', function(e){
       e.preventDefault();
       var appOpened   = false;
@@ -276,11 +313,11 @@
     <section id="onas" class="section">
   <div class="container grid-2">
     <div>
-      <h2 class="section-title"><i class="bi bi-people-fill"></i> O nás</h3>
+      <h2 class="section-title"><i class="bi bi-people-fill"></i> O nás</h2>
       <div class="image-overlay">
         <img
           src="images/fabia.jpg"
-          alt="Fabia"
+          alt="Výcvikové vozidlo Škoda Fabia IV"
           loading="lazy"
         >
         <div class="overlay-text">
@@ -305,7 +342,7 @@
     </div>
   </div>
 <div class="recenze-section">
-  <h2 class="recenze-nadpis">Recenze</h3>
+  <h2 class="recenze-nadpis">Recenze</h2>
   <div class="recenze-carousel-wrapper">
     <div class="recenze-carousel">
       <div class="recenze-slide active">
@@ -329,7 +366,7 @@
 </section>
     <section id="kurzy" class="section" style="background:#fff">
       <div class="container">
-        <h2 class="section-title"><i class="bi bi-journal-check"></i> Kurzy & výcvik</h3>
+        <h2 class="section-title"><i class="bi bi-journal-check"></i> Kurzy & výcvik</h2>
         <div class="grid-2">
           <div class="card">
             <h3><i class="bi bi-car-front-fill"></i> Skupina B</h3>
@@ -343,20 +380,22 @@
           <div class="card">
             <h3><i class="bi bi-emoji-smile"></i> Kondiční jízdy</h3>
             <p>Pro držitele ŘP, kteří si chtějí osvěžit dovednosti (parkování, dálnice, město).</p>
-          </div> 
-      </div> 
+          </div>
+        </div>
+      </div>
     </section>
     <section id="cenik" class="section">
       <div class="container">
-        <h2 class="section-title"><i class="bi bi-cash-coin"></i> Ceník</h3>
+        <h2 class="section-title"><i class="bi bi-cash-coin"></i> Ceník</h2>
         <div class="plans">
           <div class="card plan">
             <h3>Skupina B</h3>
             <p class="price">Studenti 18 000 Kč</p>
-		<p class="muted">Rycholokurz 21 000 Kč</p>
+		<p class="price">L17 18 000 Kč</p>
+		<p class="muted">Rychlokurz 21 000 Kč</p>
 		<p class="muted">Automat 20 000 Kč</p>
             <p class="muted">Standardní cena 19 000 Kč</p>
-<p class="muted">Cena pro přihlášky zaevidované po 1.2.2026</p>
+<p class="muted">Cena pro přihlášky zaevidované od 1.10.2026</p>
           </div>
           <div class="card plan">
             <h3>Kondiční jízdy</h3>
@@ -365,10 +404,9 @@
           </div>
  <div class="card plan">
             <h3>Platba úřadu za zkoušky</h3>
-            <p class="muted">1.Zkouška 700 Kč</p>
+            <p class="muted">1. zkouška 700 Kč</p>
 <p class="muted">Opravná jízda 400 Kč</p>
 <p class="muted">Opravný test 100 Kč</p>
-            <p class="muted"></p>
 <h3>Platba autoškole za opravné zkoušky</h3>
 <p class="muted">Opravná jízda 500 Kč</p>
 <p class="muted">Opravný test 100 Kč</p>
@@ -379,13 +417,13 @@
     </section>
     <section id="prihlaska" class="section">
       <div class="container">
-        <h2 class="section-title"><i class="bi bi-pencil-fill"></i> Online přihláška</h3>
-        <iframe src="https://app.odjeto.cz/student-register?schoolId=8" width="100%" height="1150" frameborder="0" style="border:none; max-width:1250px;"></iframe>
+        <h2 class="section-title"><i class="bi bi-pencil-fill"></i> Online přihláška</h2>
+        <iframe title="Online přihláška do autoškoly" src="https://app.odjeto.cz/student-register?schoolId=8" width="100%" height="1150" style="border:none; max-width:1250px;"></iframe>
        </div>
     </section>
         <section id="download" class="section">
   <div class="container">
-    <h2 class="section-title"><i class="bi bi-file-earmark-arrow-down"></i> Ke stažení</h3>
+    <h2 class="section-title"><i class="bi bi-file-earmark-arrow-down"></i> Ke stažení</h2>
     <div class="grid-2">
       <div class="card">
         <h3><i class="bi bi-file-earmark-pdf"></i> Žádost o přijetí</h3>
@@ -404,8 +442,9 @@
     </div>
   </div>
 </section>
+    <section id="faq" class="section">
       <div class="container faq">
-        <h2 class="section-title"><i class="bi bi-question-circle"></i> Časté dotazy</h3>
+        <h2 class="section-title"><i class="bi bi-question-circle"></i> Časté dotazy</h2>
         <details><summary>Jak dlouho trvá kurz?</summary><p>Je to individuální, dle vašich časových možností a domluvy s instruktorem.</p></details>
         <details><summary>Je možná platba na splátky?</summary><p>Ano, po dohodě. Rádi najdeme vhodný plán.</p></details>
         <details><summary>Kde probíhá teorie?</summary><p>V učebně na Gymnáziu Uherské Hradiště.</p></details>
@@ -414,7 +453,7 @@
     <section id="kontakt" class="section" style="background:#fff">
       <div class="container grid-2">
         <div>
-          <h2 class="section-title"><i class="bi bi-telephone-fill"></i> Kontakt</h3>
+          <h2 class="section-title"><i class="bi bi-telephone-fill"></i> Kontakt</h2>
           <p><strong>Autoškola Pavlů</strong><br>Učebna: Gymnázium Uherské Hradiště<br>Velehradská třída 218, 686 01 Uherské Hradiště</p>
           <p><i class="bi bi-telephone"></i> <a href="tel:+420776886472">+420 776 886 472</a><br>
              <i class="bi bi-envelope"></i> <a href="mailto:lukaspavlu@gmail.com">lukaspavlu@gmail.com</a></p>
@@ -426,17 +465,62 @@
         <div>
           <iframe class="map-embed" title="Mapa – Gymnázium Uherské Hradiště"
             src="https://www.google.com/maps?q=Gymn%C3%A1zium%20Uhersk%C3%A9%20Hradi%C5%A1t%C4%9B%2C%20Velehradsk%C3%A1%20t%C5%99%C3%ADda%20218%2C%20Uhersk%C3%A9%20Hradi%C5%A1t%C4%9B&output=embed" allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-        </section>
+        </div>
+      </div>
+    </section>
   </main>
   <footer>
     <div class="container">
       <div class="grid-2">
-        <p>© 2025 Autoškola Pavlů. Všechna práva vyhrazena.</p>
+        <p>© <span id="year">2026</span> Autoškola Pavlů. Všechna práva vyhrazena.<br>
+          <button type="button" class="cookie-settings" id="cookieSettings">Nastavení cookies</button></p>
         <p style="text-align:right">Autor: LP.<br>
-          <a href="https://www.facebook.com/AutoskolaPavlu" target="_blank" rel="noopener"><i class="bi bi-facebook"></i></a>&nbsp;&nbsp;<a href="https://www.instagram.com/" target="_blank" rel="noopener"><i class="bi bi-instagram"></i></a></p>
+          <a href="https://www.facebook.com/AutoskolaPavlu" target="_blank" rel="noopener" aria-label="Facebook"><i class="bi bi-facebook"></i></a>&nbsp;&nbsp;<a href="https://www.instagram.com/autoskolapavlu.cz" target="_blank" rel="noopener" aria-label="Instagram"><i class="bi bi-instagram"></i></a></p>
       </div>
     </div>
   </footer>
+  <div class="cookie-bar" id="cookieBar" role="dialog" aria-live="polite" aria-label="Souhlas s cookies" hidden>
+    <p><i class="bi bi-cookie"></i> Rádi bychom používali analytické cookies (Google Analytics), abychom věděli, jak web používáte, a mohli ho zlepšovat. Cookies použijeme jen s vaším souhlasem, který můžete kdykoliv změnit v patičce webu.</p>
+    <div class="cookie-actions">
+      <button type="button" class="cookie-reject" id="cookieReject">Odmítnout</button>
+      <button type="button" class="cookie-accept" id="cookieAccept">Souhlasím</button>
+    </div>
+  </div>
+  <script>
+    // Cookie lišta – volba se ukládá v prohlížeči návštěvníka
+    (function(){
+      var KEY = 'cookieConsent';
+      var bar = document.getElementById('cookieBar');
+      function getChoice(){ try { return localStorage.getItem(KEY); } catch(e){ return null; } }
+      function setChoice(v){ try { localStorage.setItem(KEY, v); } catch(e){} }
+      function deleteGaCookies(){
+        document.cookie.split(';').forEach(function(c){
+          var name = c.split('=')[0].trim();
+          if (name === '_ga' || name.indexOf('_ga_') === 0){
+            var host = location.hostname.replace(/^www\./, '');
+            ['', '; domain=' + host, '; domain=.' + host].forEach(function(d){
+              document.cookie = name + '=; expires=Thu, 01 Jan 1970 00:00:00 GMT; path=/' + d;
+            });
+          }
+        });
+      }
+      var choice = getChoice();
+      if (choice === 'accepted') window.loadAnalytics();
+      else if (choice !== 'rejected') bar.hidden = false;
+
+      document.getElementById('cookieAccept').addEventListener('click', function(){
+        setChoice('accepted'); bar.hidden = true; window.loadAnalytics();
+      });
+      document.getElementById('cookieReject').addEventListener('click', function(){
+        var wasLoaded = window.gaLoaded;
+        setChoice('rejected'); bar.hidden = true; deleteGaCookies();
+        if (wasLoaded) location.reload(); // zastaví už spuštěné měření
+      });
+      document.getElementById('cookieSettings').addEventListener('click', function(){
+        bar.hidden = false;
+      });
+    })();
+  </script>
   <script>
     // Smooth scroll for in-page links
     document.querySelectorAll('a[href^="#"]').forEach(a=>{
@@ -448,30 +532,22 @@
         }
       });
     });
-    // Simple client-side "submission" (only if form exists)
-    const form = document.getElementById('signupForm');
-    if(form){
-      form.addEventListener('submit', (e)=>{
-        e.preventDefault();
-        const data = Object.fromEntries(new FormData(form).entries());
-        // Basic validation
-        for (const key of ['jmeno','prijmeni','narozeni','email','telefon','skupina']){
-          if(!data[key]){ alert('Vyplňte všechna povinná pole.'); return; }
-        }
-        alert('Děkujeme! Vaše přihláška byla zaznamenána (ukázkový režim). Nastavte si odesílání na e-mail nebo do CRM.');
-        form.reset();
-      });
-    }
+    // Aktuální rok v patičce
+    document.getElementById('year').textContent = new Date().getFullYear();
     // Hamburger menu toggle (s kontrolou existence prvků)
     (function(){
       const toggle = document.querySelector('.nav-toggle');
       const navLinks = document.querySelector('.nav-links');
       if(toggle && navLinks){
-        toggle.addEventListener('click', ()=> navLinks.classList.toggle('open'));
+        toggle.addEventListener('click', ()=> {
+          const open = navLinks.classList.toggle('open');
+          toggle.setAttribute('aria-expanded', open);
+        });
         // Zavřít menu při kliknutí na odkaz (užitečné na mobilu)
         navLinks.querySelectorAll('a').forEach(a=>{
           a.addEventListener('click', ()=> {
-            if(navLinks.classList.contains('open')) navLinks.classList.remove('open');
+            navLinks.classList.remove('open');
+            toggle.setAttribute('aria-expanded', 'false');
           });
         });
       }
