@@ -95,7 +95,17 @@
     .icon-row i{color:var(--primary);margin-top:4px}
     .plans{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
     @media (max-width:900px){.plans{grid-template-columns:1fr}}
-    .plan .price{font-size:28px;font-weight:800;color:var(--primary-dark)}
+    .plan h3{margin:0 0 12px}
+    .plan .price-list+h3{margin-top:20px}
+    .price-list{display:grid;gap:8px}
+    .price-box{display:flex;justify-content:space-between;align-items:baseline;gap:12px;padding:10px 14px;border:1px solid #e5e7eb;border-radius:12px;background:#fafbff}
+    .price-box strong{color:var(--primary-dark);white-space:nowrap}
+    .price-box.highlight{border-color:var(--primary);background:#eef4ff}
+    .price-box.highlight strong{font-size:18px}
+    a.price-link{color:var(--text);cursor:pointer;transition:transform .15s,box-shadow .15s}
+    a.price-link:hover{text-decoration:none;transform:translateY(-1px);box-shadow:0 4px 14px rgba(0,86,179,.18)}
+    a.price-link i{color:var(--primary)}
+    .price-note{font-size:13px;margin:10px 0 0}
     .muted{color:var(--muted)}
     form .row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
     @media (max-width:700px){form .row{grid-template-columns:1fr}}
@@ -246,10 +256,10 @@
 </a>
       <button class="nav-toggle" aria-label="Menu" aria-expanded="false"><i class="bi bi-list"></i></button>
       <div class="nav-links">
-        <a href="#onas">O nás</a>
-        <a href="#kurzy">Kurzy</a>
         <a href="#cenik">Ceník</a>
         <a href="#prihlaska">Přihláška</a>
+        <a href="#onas">O nás</a>
+        <a href="#kurzy">Kurzy</a>
         <a href="#download">Ke stažení</a>
         <a href="#kontakt">Kontakty</a>
         <a href="https://www.facebook.com/AutoskolaPavlu" id="fbLink" target="_blank" rel="noopener" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
@@ -313,6 +323,50 @@
     </div>
   </header>
   <main>
+    <section id="cenik" class="section">
+      <div class="container">
+        <h2 class="section-title"><i class="bi bi-cash-coin"></i> Ceník</h2>
+        <div class="plans">
+          <div class="card plan">
+            <h3>Skupina B</h3>
+            <div class="price-list">
+              <a class="price-box highlight price-link" href="#prihlaska" title="Přihlásit se na tento kurz"><span>Student nebo L17 <i class="bi bi-arrow-right-circle"></i></span><strong>18 000 Kč</strong></a>
+              <div class="price-box"><span>Standardní cena</span><strong>19 000 Kč</strong></div>
+              <div class="price-box"><span>Automat</span><strong>20 000 Kč</strong></div>
+              <div class="price-box"><span>Rychlokurz</span><strong>21 000 Kč</strong></div>
+            </div>
+            <p class="muted price-note">Cena pro přihlášky zaevidované od 1.10.2026</p>
+          </div>
+          <div class="card plan">
+            <h3>Kondiční jízdy</h3>
+            <div class="price-list">
+              <div class="price-box highlight"><span>Jízda</span><strong>600 Kč / 45 min</strong></div>
+            </div>
+            <p class="muted price-note">Balíčky na míru</p>
+          </div>
+          <div class="card plan">
+            <h3>Platba úřadu za zkoušky</h3>
+            <div class="price-list">
+              <div class="price-box"><span>1. zkouška</span><strong>700 Kč</strong></div>
+              <div class="price-box"><span>Opravná jízda</span><strong>400 Kč</strong></div>
+              <div class="price-box"><span>Opravný test</span><strong>100 Kč</strong></div>
+            </div>
+            <h3>Platba autoškole za opravné zkoušky</h3>
+            <div class="price-list">
+              <div class="price-box"><span>Opravná jízda</span><strong>500 Kč</strong></div>
+              <div class="price-box"><span>Opravný test</span><strong>100 Kč</strong></div>
+            </div>
+          </div>
+        </div>
+        <p class="muted">Možnost splátek po dohodě.</p>
+      </div>
+    </section>
+    <section id="prihlaska" class="section">
+      <div class="container">
+        <h2 class="section-title"><i class="bi bi-pencil-fill"></i> Online přihláška</h2>
+        <iframe title="Online přihláška do autoškoly" src="https://app.odjeto.cz/student-register?schoolId=8" width="100%" height="1150" style="border:none; max-width:1250px;"></iframe>
+       </div>
+    </section>
     <section id="onas" class="section">
   <div class="container grid-2">
     <div>
@@ -388,43 +442,6 @@
         </div>
       </div>
     </section>
-    <section id="cenik" class="section">
-      <div class="container">
-        <h2 class="section-title"><i class="bi bi-cash-coin"></i> Ceník</h2>
-        <div class="plans">
-          <div class="card plan">
-            <h3>Skupina B</h3>
-            <p class="price">Studenti 18 000 Kč</p>
-		<p class="price">L17 18 000 Kč</p>
-		<p class="muted">Rychlokurz 21 000 Kč</p>
-		<p class="muted">Automat 20 000 Kč</p>
-            <p class="muted">Standardní cena 19 000 Kč</p>
-<p class="muted">Cena pro přihlášky zaevidované od 1.10.2026</p>
-          </div>
-          <div class="card plan">
-            <h3>Kondiční jízdy</h3>
-            <p class="price">600 Kč / 45 min</p>
-            <p class="muted">Balíčky na míru</p>
-          </div>
- <div class="card plan">
-            <h3>Platba úřadu za zkoušky</h3>
-            <p class="muted">1. zkouška 700 Kč</p>
-<p class="muted">Opravná jízda 400 Kč</p>
-<p class="muted">Opravný test 100 Kč</p>
-<h3>Platba autoškole za opravné zkoušky</h3>
-<p class="muted">Opravná jízda 500 Kč</p>
-<p class="muted">Opravný test 100 Kč</p>
-          </div>
-        </div>
-        <p class="muted">Možnost splátek po dohodě.</p>
-      </div>
-    </section>
-    <section id="prihlaska" class="section">
-      <div class="container">
-        <h2 class="section-title"><i class="bi bi-pencil-fill"></i> Online přihláška</h2>
-        <iframe title="Online přihláška do autoškoly" src="https://app.odjeto.cz/student-register?schoolId=8" width="100%" height="1150" style="border:none; max-width:1250px;"></iframe>
-       </div>
-    </section>
         <section id="download" class="section">
   <div class="container">
     <h2 class="section-title"><i class="bi bi-file-earmark-arrow-down"></i> Ke stažení</h2>
@@ -452,6 +469,7 @@
         <details><summary>Jak dlouho trvá kurz?</summary><p>Je to individuální, dle vašich časových možností a domluvy s instruktorem.</p></details>
         <details><summary>Je možná platba na splátky?</summary><p>Ano, po dohodě. Rádi najdeme vhodný plán.</p></details>
         <details><summary>Kde probíhá teorie?</summary><p>V učebně na Gymnáziu Uherské Hradiště.</p></details>
+        <details><summary>Jak funguje kurz L17?</summary><p>Kurz probíhá stejně jako kurz skupiny B. Začít s ním můžete už v 16 letech, zkoušky se dělají v 17 letech a do 18 let řídíte s mentorem.</p></details>
       </div>
     </section>
     <section id="kontakt" class="section" style="background:#fff">
